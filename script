@@ -1,0 +1,8 @@
+if ($leaseBound=1) do={
+  local queues
+  :set $queues [/queue simple print count-only where target="$leaseActIP/32"]
+  if ($queues <= 0) do={
+    /queue simple add max-limit=512k/1M target=$leaseActIP name=$leaseActMAC comment="Auto created by DHCP"
+  }
+  
+} 
